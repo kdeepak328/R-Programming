@@ -1,4 +1,4 @@
-setwd("C:/Users/kdeep/Desktop/Info_Visual lab/Programs/Datasets")
+setwd("C:/Users/kdeep/Desktop/Datasets")
 
 install.packages("tidyverse")
 library(ggplot2)
@@ -22,7 +22,7 @@ summary(heart_data)
 
 
 colnames(heart_data)
-names(heart_data)[names(heart_data) == "ï..age"] <- "age"
+names(heart_data)[names(heart_data) == "Ã¯..age"] <- "age"
 colnames(heart_data)
 
 View(heart_data)
@@ -154,32 +154,12 @@ rpart.plot(regressionTree3Complex)
 summary(regressionTree3Complex)
 
 
-
-
-
-
-
-
-
-
-#miscellaneous
-
-library(gridExtra)
-
-grid.arrange(
-  ggplot(new_data, aes(x = sex, fill = target))+
-    geom_bar(position = "fill"),
-  
-  ggplot(new_data, aes(x = exang, fill = target))+
-    geom_bar(position = "fill"), nrow = 2
-)
-
-
-
 data <- cbind(new_data, groups = ifelse((new_data$age<45), 0, ifelse((new_data$age>=45)&(new_data$age<55), 1, 2)))
 data$groups
 data$groups <- as.factor(data$groups)
 data
+
+
 # we will remove the age column as this is very generalised column and we have divided it, group, to include 
 # that in our analysis more specifically.
 
@@ -244,18 +224,3 @@ ggplot(new_data, aes(x =ca , y = thalach, color = target, shape = target))+
   geom_point()+
   geom_smooth(se = FALSE)+
   ggtitle("Maximum Heart Rate vs No.of Cornonary Arteries")
-
-
-# Testing new plots
-
-data2 = subset(new_data, select = c(-cp,-exang,-slope,-ca, -thal))
-View(data2)
-
-pairs(data2)
-
-
-
-
-install.packages("gpairs")
-library("gpairs")
-gpairs(new_data)
