@@ -1,4 +1,4 @@
-setwd("C:/Users/kdeep/Desktop/Info_Visual lab/Programs/Datasets")
+setwd("C:/Users/kdeep/Desktop/Datasets")
 
 # Install Outlier Package
 install.packages("outliers")
